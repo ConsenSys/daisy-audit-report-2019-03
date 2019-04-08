@@ -1,0 +1,1181 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/usecases/PlanSubscriptionManager.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">contracts/usecases/</a> PlanSubscriptionManager.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>46/46</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">84.21% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>32/38</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>7/7</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>48/48</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">75×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">71×</span>
+<span class="cline-any cline-yes">69×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67×</span>
+<span class="cline-any cline-yes">67×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">61×</span>
+<span class="cline-any cline-yes">93×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">870×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">858×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">858×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">854×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">852×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">852×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">850×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">850×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">846×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">846×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">34×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">34×</span>
+<span class="cline-any cline-yes">34×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">963×</span>
+<span class="cline-any cline-yes">961×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">959×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">959×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">955×</span>
+<span class="cline-any cline-yes">955×</span>
+<span class="cline-any cline-yes">955×</span>
+<span class="cline-any cline-yes">955×</span>
+<span class="cline-any cline-yes">955×</span>
+<span class="cline-any cline-yes">955×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">955×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">pragma solidity ^0.5.4;
+&nbsp;
+import "../SubscriptionManager.sol";
+&nbsp;
+/**
+ * @title Subscription manager plan based usecase.
+ * @dev This usecase supports plans (restricts the parameters that a
+ * subscription can have).
+ */
+contract PlanSubscriptionManager is SubscriptionManager {
+    struct Plan {
+        // Amount of tokens to be transferred
+        uint256 price;
+        // Unit used for billing periods
+        PeriodUnit periodUnit;
+        // Number of PeriodUnits between payments
+        uint256 periods;
+        // Number of times that it can be executed (0 means no limit)
+        uint256 maxExecutions;
+        // Indicates whether the plan is private
+        bool priv;
+        // Indicates whether the plan is active
+        bool active;
+        // Indicates whether the plan has been removed
+        bool removed;
+    }
+&nbsp;
+    /* EVENTS */
+&nbsp;
+    event PlanAdded(bytes32 indexed planIdHash, uint256 price, uint256 period);
+    event PlanRemoved(bytes32 indexed planIdHash);
+    event PlanSetActive(bytes32 indexed planIdHash, bool active);
+&nbsp;
+    /* TYPE HASHES FOR EIP712 */
+&nbsp;
+    // Used when signing the creation of a subscription
+    bytes32 constant public SUBSCRIPTION_TYPEHASH =
+        0xd3307f9981a4cfcb5a659dc18022334f7bc2b6d72fcc20723a225e939165d667;
+&nbsp;
+    // Used when signing an authorization for a private plan
+    bytes32 constant public PLAN_AUTHORIZATION_TYPEHASH = 
+        0xce1ad2dec01fa016f621edb08cef9d4e608bde7a5feccdabbd95d7ae21122eca; 
+&nbsp;
+    // Using when signing the creation o a plan (delegated execution)
+    bytes32 constant public ADD_PLAN_TYPEHASH = 
+        0x8be900e5d8700ab17934948496f0bb52143028109f3783369f4fc937dd1af465;
+&nbsp;
+    // Using when signing the removal of a plan (delegated execution)
+    bytes32 constant public REMOVE_PLAN_TYPEHASH =
+        0x2237217912dfc8a3dd0776917d3c8a0fdb382ea70d014f757e954a09c10f7724; 
+&nbsp;
+    // Using when signing the (de)activation of a plan (delegated execution)
+    bytes32 constant public SET_ACTIVE_TYPEHASH =
+        0x290836b44dd68304c2182c17b0636d11f95905c9b3e22bf964684b5853f758e9; 
+&nbsp;
+    // The token that is used for payments
+    address public acceptedToken;
+&nbsp;
+    /* STATE VARIABLES */
+&nbsp;
+    // Address in charge of authorizing access to private plans
+    address public authorizer;
+        
+    // Subscription hash =&gt; keccak256(Plan name)
+    mapping(bytes32 =&gt; bytes32) private subscriptionPlans;
+&nbsp;
+    // keccak256(Plan name) =&gt; Plan
+    mapping(bytes32 =&gt; Plan) public plans;
+&nbsp;
+    /**
+     * @dev Constructor.
+     * @param addresses Array of addresses that contains the token, publisher,
+     * wallet and authorizer for private plans, in that order. This was needed
+     * because of stack issues.
+     * @param planIdHashes The hashes of the initial plans' offchain ids. We
+     * use the hash of the id so that the user can see the plan id (string)
+     * when signing.
+     * @param planPrices The prices for the initial plans. 
+     * @param planPeriodUnits The period units for the initial plans. 
+     * @param planPeriods The periods for the initial plans. 
+     * @param planMaxPeriods The number of periods a subscription can be
+     * executed for each plan. 
+     * @param planPrivate Indicates for each plan if it is private. 
+     */
+    constructor(
+        address[] memory addresses, // publisher, wallet, token, authorizer
+        bytes32[] memory planIdHashes, 
+        uint256[] memory planPrices,
+        PeriodUnit[] memory planPeriodUnits,
+        uint256[] memory planPeriods,
+        uint256[] memory planMaxPeriods,
+        bool[] memory planPrivate
+    ) 
+        public
+        SubscriptionManager(addresses[0], addresses[1])
+    {
+        require(
+            addresses.length == 4,
+            "Different number of addresses provided"
+        );
+&nbsp;
+        require(addresses[2] != address(0), "Token can't be 0");
+        require(addresses[3] != address(0), "Authorizer can't be 0");
+&nbsp;
+        acceptedToken = addresses[2];
+        authorizer = addresses[3];
+&nbsp;
+        // The only differences with the Subscription struct is that we use a
+        // string for periodUnit (so the subscriber sees a string when signing)
+        // and also add a nonce for uniqueness protection.
+        <span class="missing-if-branch" title="else path not taken" >E</span>assert(SUBSCRIPTION_TYPEHASH == keccak256(
+            "Subscription(address token,uint256 amount,string periodUnit,uint256 periods,uint256 maxExecutions,uint256 start,string plan,bytes32 nonce)" // solhint-disable-line max-line-length
+        ));
+&nbsp;
+        <span class="missing-if-branch" title="else path not taken" >E</span>assert(PLAN_AUTHORIZATION_TYPEHASH == keccak256(
+            "PlanAuthorization(bytes32 subscriptionHash,address subscriber)"
+        ));
+&nbsp;
+        <span class="missing-if-branch" title="else path not taken" >E</span>assert(ADD_PLAN_TYPEHASH == keccak256(
+            "AddPlan(string plan,uint256 price,string periodUnit,uint256 periods,uint256 maxExecutions,bool private)" // solhint-disable-line max-line-length
+        ));
+&nbsp;
+        <span class="missing-if-branch" title="else path not taken" >E</span>assert(REMOVE_PLAN_TYPEHASH == keccak256(
+            "RemovePlan(string plan)"
+        ));
+      
+        <span class="missing-if-branch" title="else path not taken" >E</span>assert(SET_ACTIVE_TYPEHASH == keccak256(
+            "SetActive(string plan,bool active,bytes32 nonce)"
+        ));
+&nbsp;
+        require(
+            planIdHashes.length == planPrices.length &amp;&amp;
+            planPrices.length == planPeriodUnits.length &amp;&amp;
+            planPeriodUnits.length == planPeriods.length &amp;&amp;
+            planPeriods.length == planMaxPeriods.length &amp;&amp;
+            planMaxPeriods.length == planPrivate.length,
+            "Plan data arrays have different lengths"
+        );
+&nbsp;
+        for(uint256 i = 0; i &lt; planIdHashes.length; i++) {
+            _addPlan(
+                planIdHashes[i],
+                planPrices[i],
+                planPeriodUnits[i],
+                planPeriods[i],
+                planMaxPeriods[i],
+                planPrivate[i]
+            );
+        }
+    }
+&nbsp;
+    /**
+     * @dev Adds a plan. It can only be called by the owner or by providing
+     * the owner's signature.
+     * @param planIdHash The hash of the offchain id for the plan.
+     * @param price Amount of tokens to be transfer on execution.
+     * @param periodUnit Unit to use for periods (Day, Month, Year).
+     * @param periods Number period units between each payment.
+     * @param maxExecutions Number of times a subscription with this plan
+     * can be executed.
+     * @param priv True if the plan to add is private.
+     * @param sig Optional signature for delegated execution. 
+     */
+    function addPlan(
+        bytes32 planIdHash,
+        uint256 price,
+        PeriodUnit periodUnit,
+        uint256 periods,
+        uint256 maxExecutions,
+        bool priv,
+        bytes calldata sig
+    ) 
+        external
+        delegatedOwner(abi.encode(
+            ADD_PLAN_TYPEHASH,
+            planIdHash,
+            price,
+            _getPeriodUnitHash(periodUnit),
+            periods,
+            maxExecutions,
+            priv
+        ), sig)
+    {
+        _addPlan(planIdHash, price, periodUnit, periods, maxExecutions, priv);
+    }
+&nbsp;
+    /**
+     * @dev Removes a plan. It can only be called by the owner or by providing
+     * the owner's signature. It invalidates all existing subscriptions with
+     * this plan because state checks will fail.
+     * @param planIdHash The hash of the offchain id for the plan.
+     * @param sig Optional signature for delegated execution. 
+     */
+    function removePlan(
+        bytes32 planIdHash,
+        bytes calldata sig
+    )
+        external
+        delegatedOwner(abi.encode(
+            REMOVE_PLAN_TYPEHASH,
+            planIdHash
+        ), sig)
+    {
+        Plan storage plan = plans[planIdHash];
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(plan.price != 0 &amp;&amp; !plan.removed, "Plan doesn't exist");
+&nbsp;
+        delete plans[planIdHash];
+        plans[planIdHash].removed = true;
+&nbsp;
+        emit PlanRemoved(planIdHash);
+    }
+&nbsp;
+    /**
+     * @dev Sets a plan active or inactive. When inactive, a plan doesn't
+     * accept new subscriptions. It can only be called by the owner or by
+     * providing the owner's signature.
+     * @param planIdHash The hash of the offchain id for the plan.
+     * @param active Specifies if the plan will be set as active or inactive.
+     * @param nonce Specifies if the plan will be set as active or inactive.
+     * Only needed when delegating execution.
+     * @param sig Optional signature for delegated execution. 
+     */
+    function setActive(
+        bytes32 planIdHash,
+        bool active,
+        bytes32 nonce,
+        bytes calldata sig
+    )
+        external
+        delegatedOwner(abi.encode(
+            SET_ACTIVE_TYPEHASH,
+            planIdHash,
+            active,
+            nonce
+        ), sig)
+    {
+        Plan storage plan = plans[planIdHash];
+        require(plan.price != 0 &amp;&amp; !plan.removed, "Plan doesn't exist");
+        plan.active = active;
+&nbsp;
+        emit PlanSetActive(planIdHash, active);
+    }
+&nbsp;
+    /**
+     * @dev Creates a subscription.
+     * @param maxExecutions Number of times the subscription can be executed.
+     * @param start Timestamp in which the first payment can be executed.
+     * @param planIdHash The hash of the offchain id for the plan.
+     * @param nonce Replay protection.
+     * @param authSig Signature generated by the authorizer for private plans.
+     * @param sig Signature generated by the subscriber. 
+     */
+    function create(
+        uint256 maxExecutions,
+        uint256 start,
+        bytes32 planIdHash,
+        bytes32 nonce,
+        bytes memory authSig,
+        bytes memory sig
+    )
+        public
+    {
+        Plan storage plan = plans[planIdHash];
+&nbsp;
+        require(plan.active, "Plan doesn't accept new subscriptions");
+&nbsp;
+        require(
+            plan.maxExecutions == 0 || maxExecutions &lt;= plan.maxExecutions,
+            "Max periods exceed plan's max periods"
+        );
+&nbsp;
+        bytes32 subscriptionHash = keccak256(abi.encode(
+            SUBSCRIPTION_TYPEHASH,
+            acceptedToken,
+            plan.price,
+            _getPeriodUnitHash(plan.periodUnit),
+            plan.periods,
+            maxExecutions,
+            start,
+            planIdHash,
+            nonce
+        ));
+&nbsp;
+        _replayGuard(subscriptionHash);
+&nbsp;
+        address subscriber = getSigner(subscriptionHash, sig);
+&nbsp;
+        if (plan.priv) {
+            bytes32 authHash = keccak256(abi.encode(
+                PLAN_AUTHORIZATION_TYPEHASH,
+                subscriptionHash,
+                subscriber
+            ));
+&nbsp;
+            require(
+                authorizer == getSigner(authHash, authSig),
+                "Invalid authorization signature"
+            );
+        }
+&nbsp;
+        _create(
+            subscriptionHash,
+            subscriber,
+            acceptedToken,
+            plan.price,
+            plan.periodUnit,
+            plan.periods,
+            maxExecutions == 0 ? plan.maxExecutions : maxExecutions,
+            start
+        );
+&nbsp;
+        subscriptionPlans[subscriptionHash] = planIdHash;
+    }
+&nbsp;
+    /**
+     * @dev Overrides the validation and adds checks related to plans.
+     * @param subscriptionHash The id of the subscription.
+     * @param sub The struct with the subscription's data.
+     */
+    function _validateSubscriptionState(
+        bytes32 subscriptionHash,
+        Subscription memory sub
+    )
+        internal
+        view
+    {
+        super._validateSubscriptionState(subscriptionHash, sub);
+&nbsp;
+        Plan storage plan = plans[subscriptionPlans[subscriptionHash]];
+        require(!plan.removed, "Plan has been removed");
+    }
+&nbsp;
+    /**
+     * @dev Internal function for adding a plan.
+     * @param planIdHash The hash of the offchain id for the plan.
+     * @param price Amount of tokens to be transferred on execution.
+     * @param periodUnit Unit to use for periods (Day, Month, Year).
+     * @param periods Number period units between each payment.
+     * @param maxExecutions Number of times a subscription with this plan
+     * can be executed.
+     * @param priv True if the plan to add is private.
+     */
+    function _addPlan(
+        bytes32 planIdHash,
+        uint256 price,
+        PeriodUnit periodUnit,
+        uint256 periods,
+        uint256 maxExecutions,
+        bool priv
+    )
+        internal
+    {
+        require(price != 0, "Plan price can't be 0");
+        require(periods != 0, "Plan periods can't be 0");
+&nbsp;
+        Plan storage plan = plans[planIdHash];
+&nbsp;
+        require(
+            plan.price == 0 &amp;&amp; !plan.removed,
+            "Plan id has already been used"
+        );
+&nbsp;
+        plan.price = price;
+        plan.periodUnit = periodUnit;
+        plan.periods = periods;
+        plan.maxExecutions = maxExecutions;
+        plan.priv = priv;
+        plan.active = true;
+&nbsp;
+        emit PlanAdded(planIdHash, price, periods);
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Mar 28 2019 12:12:45 GMT-0700 (Pacific Daylight Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
