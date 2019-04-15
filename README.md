@@ -59,8 +59,8 @@ ________________
 
 | | **Minor** | **Medium** | **Major** | **Critical** |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-| **Open** | **7** | **2** | **0** | **0** |
-| **Closed** | **0** | **0** | **0** | **0** |
+| **Open** | **0** | **0** | **0** | **0** |
+| **Closed** | **7** | **2** | **0** | **0** |
 
 ________________
 
@@ -121,15 +121,15 @@ The following table contains all the issues discovered during the audit. The iss
 
 | Chapter      | Issue Title             | Issue Status | Severity    |
 |:------------:| ----------------------- |:------------:|:-----------:|
-| 3.1  | [Contract state is insufficient to determine whether a subscription is still valid](#31-contract-state-is-insufficient-to-determine-whether-a-subscription-is-still-valid) | **Open**  | **Medium** |
-| 3.2  | [`maxExecutions` can be bypassed via `SubscriptionManager.execute` reentrancy](#32-maxexecutions-can-be-bypassed-via-subscriptionmanagerexecute-reentrancy) | **Open**  | **Medium** |
-| 3.3  | [Consider adding expiration dates to signatures](#33-consider-adding-expiration-dates-to-signatures) | **Open**  | **Minor** |
-| 3.4  | [Consider disallowing future `start` timestamps](#34-consider-disallowing-future-start-timestamps) | **Open**  | **Minor** |
-| 3.5  | [`SubscriptionManager` is not robust to additions to the `PeriodUnit` enum](#35-subscriptionmanager-is-not-robust-to-additions-to-the-periodunit-enum) | **Open**  | **Minor** |
-| 3.6  | [Update inline documentation](#36-update-inline-documentation) | **Open**  | **Minor** |
-| 3.7  | [`maxExecutions` special case value of `0` should be replaced with `2**256-1`](#37-maxexecutions-special-case-value-of-0-should-be-replaced-with-2256-1) | **Open**  | **Minor** |
-| 3.8  | [Front-running denial of service against subscribers](#38-front-running-denial-of-service-against-subscribers) | **Open**  | **Minor** |
-| 3.9  | [Relayers can incur unlimited transaction costs due to malicious users](#39-relayers-can-incur-unlimited-transaction-costs-due-to-malicious-users) | **Open**  | **Minor** |
+| 3.1  | [Contract state is insufficient to determine whether a subscription is still valid](#31-contract-state-is-insufficient-to-determine-whether-a-subscription-is-still-valid) | **Closed**  | **Medium** |
+| 3.2  | [`maxExecutions` can be bypassed via `SubscriptionManager.execute` reentrancy](#32-maxexecutions-can-be-bypassed-via-subscriptionmanagerexecute-reentrancy) | **Closed**  | **Medium** |
+| 3.3  | [Consider adding expiration dates to signatures](#33-consider-adding-expiration-dates-to-signatures) | **Closed**  | **Minor** |
+| 3.4  | [Consider disallowing future `start` timestamps](#34-consider-disallowing-future-start-timestamps) | **Closed**  | **Minor** |
+| 3.5  | [`SubscriptionManager` is not robust to additions to the `PeriodUnit` enum](#35-subscriptionmanager-is-not-robust-to-additions-to-the-periodunit-enum) | **Closed**  | **Minor** |
+| 3.6  | [Update inline documentation](#36-update-inline-documentation) | **Closed**  | **Minor** |
+| 3.7  | [`maxExecutions` special case value of `0` should be replaced with `2**256-1`](#37-maxexecutions-special-case-value-of-0-should-be-replaced-with-2256-1) | **Closed**  | **Minor** |
+| 3.8  | [Front-running denial of service against subscribers](#38-front-running-denial-of-service-against-subscribers) | **Closed**  | **Minor** |
+| 3.9  | [Relayers can incur unlimited transaction costs due to malicious users](#39-relayers-can-incur-unlimited-transaction-costs-due-to-malicious-users) | **Closed**  | **Minor** |
 
 ## 3 Issue Details
 
@@ -137,7 +137,7 @@ The following table contains all the issues discovered during the audit. The iss
 
 | Severity     | Status    | Remediation Comment |
 |:------------:|:---------:| ------------------- |
-| **Medium** | **Open** | This issue is currently under review. |
+| **Medium** | **Closed** | Issue has been fixed in [tokenfoundry/subscription-contracts#32](https://github.com/tokenfoundry/subscription-contracts/pull/32) with the recommended remediation |
 
 #### Description
 
@@ -170,7 +170,7 @@ With those semantics, a publisher can determine whether to provide service by ex
 
 | Severity     | Status    | Remediation Comment |
 |:------------:|:---------:| ------------------- |
-| **Medium** | **Open** | This issue is currently under review. |
+| **Medium** | **Closed** | Issue has been fixed in [tokenfoundry/subscription-contracts#32](https://github.com/tokenfoundry/subscription-contracts/pull/32) by, among other things, moving the `transferFrom` call to the end of the function |
 
 #### Description
 
@@ -245,7 +245,7 @@ A code comment mentions ordering things the way it's done now to preserve orderi
 
 | Severity     | Status    | Remediation Comment |
 |:------------:|:---------:| ------------------- |
-| **Minor** | **Open** | This issue is currently under review. |
+| **Minor** | **Closed** | Issue has been fixed by introducing signature expirations in [tokenfoundry/subscription-contracts#32](https://github.com/tokenfoundry/subscription-contracts/pull/32) |
 
 #### Description
 
@@ -276,7 +276,7 @@ We suggest attaching an expiration date to all signatures. If the expectation is
 
 | Severity     | Status    | Remediation Comment |
 |:------------:|:---------:| ------------------- |
-| **Minor** | **Open** | This issue is currently under review. |
+| **Minor** | **Closed** | Issue has been fixed by removing `start` and just using `createdAt` in [tokenfoundry/subscription-contracts#32](https://github.com/tokenfoundry/subscription-contracts/pull/32) |
 
 #### Description
 
@@ -328,7 +328,7 @@ We recommend simply disallowing future `start` dates and removing the parameter 
 
 | Severity     | Status    | Remediation Comment |
 |:------------:|:---------:| ------------------- |
-| **Minor** | **Open** | This issue is currently under review. |
+| **Minor** | **Closed** | Issue has been closed by reverting on invalid `periodUnit` in [tokenfoundry/subscription-contracts#32](https://github.com/tokenfoundry/subscription-contracts/pull/32) |
 
 #### Description
 
@@ -393,7 +393,7 @@ if (sub.periodUnit == PeriodUnit.Day) {
 
 | Severity     | Status    | Remediation Comment |
 |:------------:|:---------:| ------------------- |
-| **Minor** | **Open** | This issue is currently under review. |
+| **Minor** | **Closed** | Issue has been closed in [tokenfoundry/subscription-contracts#32](https://github.com/tokenfoundry/subscription-contracts/pull/32) |
 
 #### Description
 There are a few inline documentations that are related to the older versions and are misleading.
@@ -411,7 +411,7 @@ Update the inline documentations according to the changes.
 
 | Severity     | Status    | Remediation Comment |
 |:------------:|:---------:| ------------------- |
-| **Minor** | **Open** | This issue is currently under review. |
+| **Minor** | **Closed** | The client team has decided to leave this as-is for now. There are no known vulnerabilities relating to this at present, and fixes for this require changes elsewhere in the system (back end and front end). |
 
 #### Description
 
@@ -447,7 +447,7 @@ Note that external UI can still display a string like "unlimited". Even signatur
 
 | Severity     | Status    | Remediation Comment |
 |:------------:|:---------:| ------------------- |
-| **Minor** | **Open** | This issue is currently under review. |
+| **Minor** | **Closed** | Issue has been fixed in [tokenfoundry/subscription-contracts#32](https://github.com/tokenfoundry/subscription-contracts/pull/32) by adding the `subscriber` to the `subscriptionHash` |
 
 #### Description
 
@@ -469,7 +469,7 @@ Note that this is somewhat mitigated already for _private plans_ because the has
 
 | Severity     | Status    | Remediation Comment |
 |:------------:|:---------:| ------------------- |
-| **Minor** | **Open** | This issue is currently under review. |
+| **Minor** | **Closed** | Issue has been fixed in [tokenfoundry/subscription-contracts#32](https://github.com/tokenfoundry/subscription-contracts/pull/32) by disallowing `start` dates in the future and thus immediately executing all subscriptions. (Relayers should still check balances before relaying.) |
 
 #### Description
 
@@ -551,22 +551,21 @@ A complete list of functions with their visibility and modifiers can be found [h
 
 ## 6 Test Coverage Measurement
 
-Tests are implemented using truffle tests (`mocha`, running on `ganache`, compiling with `solc: 0.5.4+commit.9549d8ff`). 102 tests are included in the test suite and they all pass.
+Tests are implemented using truffle tests (`mocha`, running on `ganache`, compiling with `solc: 0.5.4+commit.9549d8ff`). 119 tests are included in the test suite and they all pass.
 
 The [Solidity-Coverage](https://github.com/sc-forks/solidity-coverage) tool was used to measure the portion of the code base exercised by the test suite, and identify areas with little or no coverage. Specific sections of the code where necessary test coverage is missing are included in chapter 3 - Issues.
 
 
+|File                          |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
+|------------------------------|----------|----------|----------|----------|----------------|
+| contracts/                   |    98.37 |    85.14 |      100 |    98.41 |                |
+|  SubscriptionManager.sol     |    98.37 |    85.14 |      100 |    98.41 |        214,732 |
+| contracts/usecases/          |      100 |    78.26 |      100 |      100 |                |
+|  PlanSubscriptionManager.sol |      100 |    78.26 |      100 |      100 |                |
+|------------------------------|----------|----------|----------|----------|----------------|
+|All files                     |    98.85 |     82.5 |      100 |    98.88 |                |
+|------------------------------|----------|----------|----------|----------|----------------|
 
-|File                                |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
-|------------------------------------|----------|----------|----------|----------|----------------|
-| contracts/                         |      100 |    94.64 |      100 |      100 |                |
-| &nbsp; SubscriptionManager.sol     |      100 |    94.64 |      100 |      100 |                |
-| contracts/usecases/                |      100 |    84.21 |      100 |      100 |                |
-| &nbsp; PlanSubscriptionManager.sol |      100 |    84.21 |      100 |      100 |                |
-| &nbsp;                             |          |          |          |          |                |
-| **All files**                      |  **100** |**90.43** |  **100** |  **100** |                |
-
-<!-- test html -->
 It's important to note that "100% test coverage" is not a silver bullet. Our review also included an inspection of the test suite, to ensure that testing included important edge cases. As mentioned in the recommendation section, we found some scenarios that are not covered by the test suite. 
 
 The state of test coverage at the time of our review can be viewed by opening the `index.html` file from the [coverage report](coverage-reports) directory in a browser.
